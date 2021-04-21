@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,17 +14,19 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('user.index');
+    return redirect()->route('client.index');
 });
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})
+
+->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::resource('user', UserController::class);
+    Route::resource('client', ClientController::class);
 
 });
 
