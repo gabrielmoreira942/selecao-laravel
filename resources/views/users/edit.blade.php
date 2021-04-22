@@ -1,4 +1,4 @@
-
+{{--
     @extends('Clients.layout')
     @section('ClientReg')
 
@@ -25,4 +25,4 @@
                    if(UF)
                   UF.value = "{{$client->UF ?? '' }}";
              </script> --}}
-    @endsection
+    {{-- @endsection --}} 

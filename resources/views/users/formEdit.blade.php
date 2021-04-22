@@ -1,4 +1,4 @@
-<div class="row mt-5">
+{{-- <div class="row mt-5">
     <div class="col-md-6">
         <div class="mb-3">
             <label for="name" class="form-label">Nome do Usuário</label>
@@ -36,4 +36,4 @@
         <hr>
         <button type="submit" class="btn btn-success">Concluir</button>
     </div>
-</div>
+</div> --}}

@@ -28,8 +28,8 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])->group(function(){
 
     Route::resource('client', ClientController::class);
-    Route::resource('user', UserController::class);
-
+    //Route::resource('user', UserController::class);
+   
 });
 
 

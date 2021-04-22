@@ -1,4 +1,8 @@
-            {{-- CONFIGURAÇÃO DO FORMULÁRIO --}}
+
+
+      {{-- CONFIGURAÇÃO DO FORMULÁRIO --}}
+
+
 <script>
 
     $(document).ready(() => {
@@ -42,5 +46,7 @@
          const UF = document.querySelector('#UF');
          if(UF)
          UF.value = "{{$client->UF ?? '' }}";
+
+
 </script>
 

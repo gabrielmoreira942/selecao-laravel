@@ -8,7 +8,7 @@
         <a href="{{route('client.create')}}" class="btn btn-success">Cadastrar cliente</a>
     </div>
 </div>
-
+        @include('messages')
 <table id="tabela" class="table table-hover table-striped mt-5">
     {{-- table-bordered border-dark --}}
     <thead>
@@ -45,7 +45,7 @@
 
       {{-- onclick="deleteInDatabase('{{route('client.destroy', $client->id)}}')" --}}
       <a class="btn btn-primary btn-sm" href="{{route('client.edit', $client->id)}}">Editar</a>
-      <a class="btn btn-danger btn-sm" >Excluir</a>
+      <a class="btn btn-danger btn-sm" onclick="deleteInDatabase('{{route('client.destroy', $client->id)}}')">Excluir</a>
     </td>
 
 

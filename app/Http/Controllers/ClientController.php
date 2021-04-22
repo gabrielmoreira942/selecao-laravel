@@ -92,8 +92,21 @@ class ClientController extends Controller
     }
 
 
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client)
     {
-        //
+
+
+
+       try {
+        $client->delete();
+
+        $request->session()->flash('success', 'O Registro foi excluído com sucesso!');
+
+        } catch(\Exception $e) {
+            $request->session()->flash('error', 'Ocorreu um erro ao excluir esses dados!');
+
+        }
+
+       return redirect()->back();
     }
 }
