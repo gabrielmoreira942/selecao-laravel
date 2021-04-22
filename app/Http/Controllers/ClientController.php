@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use App\Models\User;
 
@@ -32,26 +33,30 @@ class ClientController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         //dados do formulário
-        $data = $request->all();
 
-        $client = new Client();
+        try { //tente executar o que está dentro.
 
-        $client->name = $data['name'];
-        $client->email = $data['email'];
-        $client->cpf = $data['CPF'];
-        $client->number = $data['number'];
-        $client->telephone = $data['telephone'];
-        $client->rg = $data['RG'];
-        $client->birth_date = $data['birth_date'];
-        $client->uf = $data['UF'];
-        $client->user_id = auth()->user()->id;
-        $client->save();
+            $data = $request->all();
+            $client = new Client();
+            $client->name = $data['name'];
+            $client->email = $data['email'];
+            $client->cpf = $data['CPF'];
+            $client->number = $data['number'];
+            $client->telephone = $data['telephone'];
+            $client->rg = $data['RG'];
+            $client->birth_date = $data['birth_date'];
+            $client->uf = $data['UF'];
+            $client->user_id = auth()->user()->id;
+            $client->save();
+            $request->session()->flash('success', 'Registro gravado com sucesso!');
+        }catch (\Exception $e){ // caso tenha ocorrido erro
 
-
-
+            $request->session()->flash('error', 'Ocorreu um erro ao gravar esses dados!');
+        }
+        return redirect()->back();
     }
 
 
@@ -61,15 +66,29 @@ class ClientController extends Controller
     }
 
 
-    public function edit(Client $client)
+    public function edit(Request $request, Client $client)
     {
-        //
+
+        return view('Clients.edit', compact('client'));
     }
 
 
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+
+        try {
+            $data = $request->all();
+            $client->update($data);
+
+            $request->session()->flash('success', 'O Registro foi alterado com sucesso!');
+
+            } catch(\Exception $e) {
+                $request->session()->flash('error', 'Ocorreu um erro ao atualizar esses dados!');
+
+            }
+
+           return redirect()->back();
+
     }
 
 

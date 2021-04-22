@@ -13,7 +13,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,29 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:3',
+            'email' => 'required',
+            'CPF' => 'required|min:14',
+            'UF' => 'required',
+            'number' => 'required|min:14',
+            'birth_date' => 'required|date'
         ];
+    }
+
+
+    public function messages()
+    {
+
+        return [
+
+            'name.required' => 'O nome é obrigatório.',
+            'name.min' => 'Seu nome deve ter pelo menos 3 letras!',
+            'birth_date.required' => 'A data de nascimento é obrigatória.',
+            'UF.required' => 'O campo UF é obrigatório.',
+            'number.required' => 'O Celular é obrigatório.',
+            'CPF.required' => 'O CPF é obrigatório.',
+            'email.required' => 'O campo Email é obrigatório.'
+        ];
+
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])->group(function(){
 
     Route::resource('client', ClientController::class);
+    Route::resource('user', UserController::class);
 
 });
 

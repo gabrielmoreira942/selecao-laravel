@@ -18,11 +18,11 @@ class CreateClientsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('email');
-            $table->string('RG', 16)->unique();
+            $table->string('RG', 16)->unique()->nullable()->default(null);
             $table->string('CPF',14)->unique();
             $table->date('birth_date');
             $table->string('number', 15);
-            $table->string('telephone', 14);
+            $table->string('telephone', 14)->nullable();
 
             $table->string('UF');
             $table->unsignedInteger('user_id');

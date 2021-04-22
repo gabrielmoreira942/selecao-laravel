@@ -23,6 +23,7 @@
           <th scope="col">Celular</th>
           <th scope="col">UF</th>
           <th scope="col">Func.Responsável</th>
+          <th scope="col" width="150"></th>
         </tr>
       </thead>
        <tbody>
@@ -34,10 +35,20 @@
       <td>{{$client->CPF}}</td>
       <td>{{$client->RG}}</td>
       <td>{{$client->birth_date->format('d/m/Y')}}</td>
-      <td>{{$client->number}}</td>
       <td>{{$client->telephone}}</td>
+      <td>{{$client->number}}</td>
       <td>{{$client->UF}}</td>
       <td>{{$client->user->name}}</td>
+      <td scope="col">
+
+      {{-- href="{{route('client.edit', $client->id)}}" --}}
+
+      {{-- onclick="deleteInDatabase('{{route('client.destroy', $client->id)}}')" --}}
+      <a class="btn btn-primary btn-sm" href="{{route('client.edit', $client->id)}}">Editar</a>
+      <a class="btn btn-danger btn-sm" >Excluir</a>
+    </td>
+
+
     </tr>
     @endforeach
   </tbody>
