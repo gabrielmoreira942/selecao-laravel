@@ -6,6 +6,7 @@ Este projeto utiliza a linguagem PHP na versão 7.3 ou superior e o Framework La
 
 - Clone o repositório executando o comando abaixo:
 `git clone https://github.com/gabrielmoreira942/selecao-laravel.git`
+- Navegue até o diretório `selecao-laravel`
 - Execute o comando abaixo para instalar as dependências do projeto:
 `composer update`
 - Crie um arquivo `.env` usando como base o arquivo `.env.example`, presente no projeto.
