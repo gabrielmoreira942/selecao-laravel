@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div class="row mt-5">
+    <div class="row mt-2">
         <div class="col-md d-flex justify-content-between align-items-center">
             <h1>Alterar dados</h1>
             {{-- <a href="{{route('client.index')}}" class="btn btn-primary">Voltar para a listagem</a> --}}
