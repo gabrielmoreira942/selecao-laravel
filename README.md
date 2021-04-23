@@ -23,6 +23,8 @@ Este projeto utiliza a linguagem PHP na versão 7.3 ou superior e o Framework La
 `php artisan key:generate`
 - Rode o comando abaixo para executar as migrações ou importe o arquivo presente no diretório **SQL**.
 `php artisan migrate --seed`
+- Rode o comando abaixo para executar o servidor de desenvolvimento:
+`php artisan serve`
 
 ### Usuário padrão
 A aplicação traz consigo um usuário padrão, que pode ser utilizado para login. Os dados são:
