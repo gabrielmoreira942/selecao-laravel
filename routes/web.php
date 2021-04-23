@@ -21,15 +21,16 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})
-
-->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function(){
 
     Route::resource('client', ClientController::class);
-    //Route::resource('user', UserController::class);
-   
+
+    Route::get('my-account', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('my-account', [UserController::class, 'update'])->name('user.update');
+    Route::delete('terminate-account', [UserController::class, 'destroy'])->name('user.destroy');
+
 });
 
 

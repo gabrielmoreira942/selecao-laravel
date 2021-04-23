@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class ClientRequest extends FormRequest
+class ClientUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,18 +27,18 @@ class ClientRequest extends FormRequest
         $rules = [
             'name' => 'required|min:3',
             'email' => 'required',
-            'cpf' => 'required|min:14|unique:clients,cpf',
+            'cpf' => ['required', 'min:14', Rule::unique('clients', 'cpf')->ignore($this->segment(2))],
             'uf' => 'required',
             'number' => 'required|min:14',
             'birth_date' => 'required|date'
         ];
 
-        if($this->uf === "SP") {
-            $rules['rg'] = 'required';
+        if(!empty($this->rg)) {
+            Rule::unique('clients', 'rg')->ignore($this->segment(2));
         }
 
-        if(!empty($this->rg)) {
-            $rules['rg'] = 'unique:clients,rg';
+        if($this->uf === "SP") {
+            $rules['rg'] = 'required';
         }
 
         return $rules;

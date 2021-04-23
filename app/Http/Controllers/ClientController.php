@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
+use App\Http\Requests\ClientUpdateRequest;
 use App\Models\Client;
-use App\Models\User;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 
 class ClientController extends Controller
@@ -21,90 +19,61 @@ class ClientController extends Controller
     {
         $clients = Client::paginate(10);
 
-
         return view('clients.ClientReg', compact('clients'));
     }
 
-
     public function create()
     {
-
         return view('clients.create');
     }
 
-
     public function store(ClientRequest $request)
     {
-        //dados do formulário
-
-        try { //tente executar o que está dentro.
-
+        try {
             $data = $request->all();
+            $data['created_by'] = auth()->user()->id;
             $client = new Client();
-            $client->name = $data['name'];
-            $client->email = $data['email'];
-            $client->cpf = $data['CPF'];
-            $client->number = $data['number'];
-            $client->telephone = $data['telephone'];
-            $client->rg = $data['RG'];
-            $client->birth_date = $data['birth_date'];
-            $client->uf = $data['UF'];
-            $client->user_id = auth()->user()->id;
-            $client->save();
-            $request->session()->flash('success', 'Registro gravado com sucesso!');
-        }catch (\Exception $e){ // caso tenha ocorrido erro
+            $client->create($data);
 
-            $request->session()->flash('error', 'Ocorreu um erro ao gravar esses dados!');
+            $request->session()->flash('success', 'Registro gravado com sucesso!');
+        }catch (\Exception $e){
+            $request->session()->flash('error', 'Ocorreu um erro ao gravar esses dados!' . $e->getMessage());
         }
         return redirect()->back();
     }
-
 
     public function show(Client $client)
     {
         //
     }
 
-
     public function edit(Request $request, Client $client)
     {
-
         return view('Clients.edit', compact('client'));
     }
 
-
-    public function update(ClientRequest $request, Client $client)
+    public function update(ClientUpdateRequest $request, Client $client)
     {
-
         try {
             $data = $request->all();
+            $data['updated_by'] = auth()->user()->id;
             $client->update($data);
 
             $request->session()->flash('success', 'O Registro foi alterado com sucesso!');
+        } catch(\Exception $e) {
+            $request->session()->flash('error', 'Ocorreu um erro ao atualizar esses dados!');
+        }
 
-            } catch(\Exception $e) {
-                $request->session()->flash('error', 'Ocorreu um erro ao atualizar esses dados!');
-
-            }
-
-           return redirect()->back();
-
+        return redirect()->back();
     }
-
 
     public function destroy(Request $request, Client $client)
     {
-
-
-
-       try {
-        $client->delete();
-
-        $request->session()->flash('success', 'O Registro foi excluído com sucesso!');
-
+        try {
+            $client->delete();
+            $request->session()->flash('success', 'O Registro foi excluído com sucesso!');
         } catch(\Exception $e) {
             $request->session()->flash('error', 'Ocorreu um erro ao excluir esses dados!');
-
         }
 
        return redirect()->back();

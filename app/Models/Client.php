@@ -11,13 +11,17 @@ class Client extends Model
     use HasFactory, SoftDeletes;
 
 
-    protected $fillable = ['name', 'email', 'RG', 'CPF', 'birth_date', 'number', 'telephone'];
+    protected $fillable = ['name', 'email', 'rg', 'cpf', 'birth_date', 'number', 'telephone', 'uf', 'created_by', 'updated_by'];
 
-    public function user()
+    public function createdBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 
     protected $casts = [
         'birth_date' => 'date',
