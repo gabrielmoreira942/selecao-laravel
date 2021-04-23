@@ -14,7 +14,10 @@
         @csrf
         @method('put')
         <div class="row mt-5">
-            <div class="col-md-6">
+
+            @include('Clients.partials.form')
+
+            {{-- <div class="col-md-6">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome do cliente</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Ex.: João da Silva" minlength="3" value="{{$client->name}}" required>
@@ -71,7 +74,7 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{$client->email}}" required>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">

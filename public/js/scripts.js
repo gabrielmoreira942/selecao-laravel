@@ -34,7 +34,3 @@ $(document).ready(() => {
     });
 });
 
-//Opção selecionada em att de clientes.
-const uf = document.querySelector('#uf');
-if(uf)
-    uf.value = "{{$client->uf ?? '' }}";

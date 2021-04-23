@@ -25,7 +25,7 @@ class ClientRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|min:3',
-            'email' => 'required',
+            'email' => 'required|email',
             'cpf' => 'required|min:14|unique:clients,cpf',
             'uf' => 'required',
             'number' => 'required|min:14',
@@ -56,7 +56,8 @@ class ClientRequest extends FormRequest
             'cpf.unique' => 'O CPF informado já encontra-se cadastrado em nossa base de dados!',
             'rg.unique' => 'O RG informado já encontra-se cadastrado em nossa base de dados!',
             'rg.required' => 'Para moradores de SP o campo RG é obrigaório!',
-            'email.required' => 'O campo Email é obrigatório.'
+            'email.required' => 'O campo E-mail é obrigatório.',
+            'email.email' => 'O E-mail informado parece não ser válido.'
         ];
     }
 }
