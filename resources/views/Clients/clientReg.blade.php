@@ -34,8 +34,8 @@
             <td>{{$client->cpf}}</td>
             <td>{{$client->rg}}</td>
             <td>{{$client->birth_date->format('d/m/Y')}}</td>
-            <td>{{$client->telephone}}</td>
-            <td>{{$client->number}}</td>
+            <td>{{$client->phone}}</td>
+            <td>{{$client->mobile}}</td>
             <td>{{$client->uf}}</td>
             <td scope="col">
                 <a class="btn btn-primary btn-sm" href="{{route('client.edit', $client->id)}}">Editar</a>

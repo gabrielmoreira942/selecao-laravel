@@ -39,15 +39,15 @@
 
 <div class="col-md-4">
     <div class="mb-3">
-        <label for="number" class="form-label">Celular</label>
-        <input type="text" class="form-control" id="number" name="number" value="{{ $client->number ?? old('number') }}" maxlength="11" required>
+        <label for="mobile" class="form-label">Celular</label>
+        <input type="text" class="form-control phone" id="mobile" name="mobile" value="{{ $client->mobile ?? old('mobile') }}" required>
     </div>
 </div>
 
 <div class="col-md-4">
     <div class="mb-3">
-        <label for="telephone" class="form-label">Telefone</label>
-        <input type="text" class="form-control" id="telephone" name="telephone" value="{{ $client->telephone ?? old('telephone') }}">
+        <label for="phone" class="form-label">Telefone</label>
+        <input type="text" class="form-control phone" id="phone" name="phone" value="{{ $client->phone ?? old('phone') }}">
     </div>
 </div>
 

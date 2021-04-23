@@ -1,8 +1,17 @@
 $(document).ready(() => {
     $('#CPF').mask('000.000.000-00', {reverse: false}); //mascarar o CPF, reverse false para seguir ordem normal (reverse true vai mascarar de trás pra frente)
-    $('#number').mask('(00) 00000-0000', {reverse: false});
-    $('#telephone').mask('(00) 0000-0000', {reverse: false});
     $('#RG').mask('00.000.000-00', {reverse: false});
+
+    var SPMaskBehavior = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    spOptions = {
+    onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+        }
+    };
+
+    $('.phone').mask(SPMaskBehavior, spOptions);
 
     $('#UF').change(function(e){ //evento ao alterar o estado (UF)
         if($(e.target).val() == 'SP'){

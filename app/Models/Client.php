@@ -11,7 +11,7 @@ class Client extends Model
     use HasFactory, SoftDeletes;
 
 
-    protected $fillable = ['name', 'email', 'rg', 'cpf', 'birth_date', 'number', 'telephone', 'uf', 'created_by', 'updated_by'];
+    protected $fillable = ['name', 'email', 'rg', 'cpf', 'birth_date', 'mobile', 'phone', 'uf', 'created_by', 'updated_by'];
 
     public function createdBy()
     {

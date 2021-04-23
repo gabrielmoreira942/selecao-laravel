@@ -22,8 +22,8 @@ class CreateClientsTable extends Migration
             $table->string('rg', 16)->unique()->nullable()->default(null);
             $table->string('cpf',14)->unique();
             $table->date('birth_date');
-            $table->string('number', 15);
-            $table->string('telephone', 14)->nullable();
+            $table->string('mobile', 15);
+            $table->string('phone', 15)->nullable();
             $table->string('uf');
             $table->timestamps();
             $table->softDeletes();

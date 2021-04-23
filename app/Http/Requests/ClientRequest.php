@@ -28,7 +28,8 @@ class ClientRequest extends FormRequest
             'email' => 'required|email',
             'cpf' => 'required|min:14|unique:clients,cpf',
             'uf' => 'required',
-            'number' => 'required|min:14',
+            'mobile' => 'required|min:14|max:15',
+            'phone' => 'required|min:14|max:15',
             'birth_date' => 'required|date'
         ];
 
@@ -51,7 +52,12 @@ class ClientRequest extends FormRequest
             'name.min' => 'Seu nome deve ter pelo menos 3 letras!',
             'birth_date.required' => 'A data de nascimento é obrigatória.',
             'uf.required' => 'O campo UF é obrigatório.',
-            'number.required' => 'O Celular é obrigatório.',
+            'mobile.required' => 'O Celular é obrigatório.',
+            'mobile.min' => 'O Celular informado parece ser inválido',
+            'mobile.max' => 'O Celular informado parece ser inválido',
+            'phone.required' => 'O Telefone é obrigatório.',
+            'phone.min' => 'O Telefone informado parece ser inválido',
+            'phone.max' => 'O Telefone informado parece ser inválido',
             'cpf.required' => 'O CPF é obrigatório.',
             'cpf.unique' => 'O CPF informado já encontra-se cadastrado em nossa base de dados!',
             'rg.unique' => 'O RG informado já encontra-se cadastrado em nossa base de dados!',
